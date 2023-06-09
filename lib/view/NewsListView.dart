@@ -22,13 +22,12 @@ class _NewsListViewState extends State<NewsListView> {
   @override
   void initState() {
     super.initState();
-    //neswCtrl = Get.put<NewsController>(NewsController());
-   neswCtrl = Get.find<NewsController>();
-    neswCtrl.getNewsList();
+    neswCtrl = Get.find<NewsController>();
+    neswCtrl.getNewsList(page: 1); // When the page is opened, the data would be loaded.
   }
 
   void _getAkis({isRefresh = false}) async {
-    await neswCtrl.getNewsList(isRefresh: isRefresh);
+    await neswCtrl.getNewsList(isRefresh: isRefresh); // refresh yapıldığında tüm veriler kaldırılıp yeniden çağrılır.
   }
   void _onRefreshPage() async {
     await _getAkis(isRefresh: true);
@@ -120,7 +119,7 @@ class _NewsListViewState extends State<NewsListView> {
                   children: [
                     Text(model.title,style: siyahText18,),
                     SizedBox(height: 6,),
-                   // Text(toDateTimeFormat_ProcessTime(model.publishedDate), style: TextStyle(color: Colors.black54),),
+                    Text(toDateTimeFormat_ProcessTime(model.updated), style: TextStyle(color: Colors.black54),),
                   ],
                 ),
               ],

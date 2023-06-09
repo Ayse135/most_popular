@@ -33,5 +33,4 @@ mixin ILocalUtil {
     try{ await addLocalData(key: "first_launch",value: firstLaunch); }catch(e){}
   }
 
-
 }

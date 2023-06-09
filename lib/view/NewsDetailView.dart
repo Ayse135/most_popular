@@ -5,31 +5,7 @@ import 'package:most_popular_mobile/model/dto_news.dart';
 import '../assets/style/OurColors.dart';
 import '../core/util/PrototypeUtil.dart';
 import '../widget/PrimaryWidgets.dart';
-//class NewsDetailView extends StatefulWidget {
-//  final dto_news haber;
-//  const NewsDetailView({Key key, this.haber}):super(key: key);
-//  @override
-//  _NewsDetailViewState createState() => _NewsDetailViewState();
-//}
-//class _NewsDetailViewState extends State<NewsDetailView> {
-//  @override
-//  Widget build(BuildContext context) {
-//    return Scaffold(
-//      appBar: PrimaryWidgets().primaryAppBar(context,'News', isMenu: false, isBack: true),
-//      body: SingleChildScrollView(
-//        physics: BouncingScrollPhysics(),
-//        child: Container(
-//          child: Column(
-//            children: [
-//              Text('#${haber.title}'),
-//            ],
-//          ),
-//
-//        ),
-//      ),
-//    );
-//  }
-//}
+
 class NewsDetailView extends StatelessWidget {
 
   final dto_news model;
@@ -48,7 +24,9 @@ class NewsDetailView extends StatelessWidget {
                 Text('${model.title}',style: siyahBText18,maxLines: 2, textAlign: TextAlign.justify,),
                 SizedBox(height: 10,),
                 Container(height: 200,
-                child: Image.network(model.uri,fit: BoxFit.cover,),),
+                child: Hero(
+                  tag: model.id,
+                  child: Image.network(model.uri,fit: BoxFit.cover,)),),
                 SizedBox(height: 20,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,7 +42,7 @@ class NewsDetailView extends StatelessWidget {
                         Icon(Icons.date_range,size: 16,color: siyah),
                         SizedBox(width: 5,),
                         Text('${model.updated.day} ${aylar[model.updated.month]} ${model.updated.year}',
-                              style: TextStyle(color: siyah,)
+                              style: TextStyle(color: siyah,)),
                         //Text("${model.publishedDate}",style: siyahText16.copyWith(color: yesilK.shade500),),
                       ],
                     ),
@@ -73,10 +51,8 @@ class NewsDetailView extends StatelessWidget {
                 SizedBox(height: 10,),
                 Text("${model.welcomeAbstract}",style:siyahText16,
                   textAlign: TextAlign.justify,),
-
               ],
             ),
-
           ),
         ),
       ),

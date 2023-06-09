@@ -23,23 +23,21 @@ class NewsController extends GetxController with ILocalUtil{
   var newsListePage = 0.obs;
   var newsListeArama = "".obs;
   var newsListeDone = false.obs;
-  Future getNewsList({bool isRefresh = false,page=0}) async {
+  Future getNewsList({bool isRefresh = false,page=1}) async {
     try{
       print("News Controller");
       newsListe_STATUS.value = networkState.loading;
       newsListePage.value ++;
       if (isRefresh){
-        newsListe.clear();
+        newsListe.clear(); // during the refreshing it cleans the data.
         newsListePage.value = 1;
       }
       print("page: ${newsListePage.value}");
       print(newsListe.length);
       newsListe=await _newsService.getNewsList();
-     // newsListe.value.addAll(
-     //     await _newsService.getNewsList(
-     //       page: 3
-     //     )
-     // );
+      newsListe.value.addAll(
+          await _newsService.getNewsList( page:page)
+      );
       newsListe_STATUS.value = networkState.success;
     }catch (e) {
       print("error: ${e.toString()}");

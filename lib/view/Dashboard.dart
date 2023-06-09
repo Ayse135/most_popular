@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:most_popular_mobile/core/services/nyt.api.dart';
 import 'package:most_popular_mobile/model/dto_news.dart';
-import 'package:most_popular_mobile/model/dto_pokemon.dart';
 import 'package:most_popular_mobile/view/NewsDetailView.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-
 import '../assets/style/OurColors.dart';
 import '../assets/style/OurTextStyle.dart';
 import '../core/util/PrototypeUtil.dart';
@@ -19,14 +17,29 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   Future<List<dto_news>> _newsListFuture;
+  int page=1;
   RefreshController _refreshController = RefreshController(initialRefresh: false);
+  final scrllCtrl =ScrollController();
 
   @override
   void initState() {
     super.initState();
-    _newsListFuture=NewsApi.getNewsData();
+    _newsListFuture=NewsApi.getNewsData(page: page);
+    scrllCtrl.addListener(listenScrolling);
   }
+  void listenScrolling(){
+    if(scrllCtrl.position.atEdge){
+      final isTop=scrllCtrl.position.pixels==0;
+      if(!isTop){
+        print("sayfa sonuna geldiniz.");
+        setState(() {
+          page=7;
+          _newsListFuture=NewsApi.getNewsData(page: 7);
 
+        });
+      }
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,12 +52,10 @@ class _DashboardState extends State<Dashboard> {
             List<dto_news> _listem=snapshot.data;
 
             return ListView.builder(
+              controller: scrllCtrl,
               itemCount: _listem.length,
               itemBuilder: (context,index){
                 var model =_listem[index];
-               // return ListTile(
-               //   title: Text(model.title),
-               // );
                 return buildNewsCard(model);
               },
             );
@@ -77,9 +88,12 @@ class _DashboardState extends State<Dashboard> {
               children: [
                 Container(
                   height: 40,
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(160),
-                      child: Image.network(model.uri,)),
+                  child: Hero(
+                    tag: model.id,
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(160),
+                        child: Image.network(model.uri,)),
+                  ),
                 ),
                 SizedBox(width: 10,),
                 Expanded(
