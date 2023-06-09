@@ -56,15 +56,15 @@ class NewsDetailView extends StatelessWidget {
                     Container(
                       width: 150,
                       child: Text("${model.byline}",style:siyahText16.copyWith(overflow:
-                      TextOverflow.ellipsis,color: Colors.black54),
+                      TextOverflow.ellipsis,color: siyah),
                         overflow: TextOverflow.ellipsis,maxLines: 1,),
                     ),
                     Row(
                       children: [
-                        Icon(Icons.date_range,size: 16,color: Colors.black54),
+                        Icon(Icons.date_range,size: 16,color: siyah),
                         SizedBox(width: 5,),
                         Text('${model.updated.day} ${aylar[model.updated.month]} ${model.updated.year}',
-                              style: TextStyle(color: Colors.black54),)
+                              style: TextStyle(color: siyah,)
                         //Text("${model.publishedDate}",style: siyahText16.copyWith(color: yesilK.shade500),),
                       ],
                     ),
