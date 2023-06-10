@@ -47,6 +47,11 @@ in the Views -> DashboardView.dart
 	 
 in the Views -> NewsDetailView.dart
 	 This view takes model as parameter and shows the detail of its.
+	 
+*postscript
+Because of the cant converting data as properly I couldn't show you how exactly i create projects 
+but i didn't want to erase them so you could examine them too.  As you can see I'm facing some issues 
+but want to improve myself in a peacefull working area.
 
 
      
