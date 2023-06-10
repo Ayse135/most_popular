@@ -59,6 +59,8 @@ class NewsApi{
     print("****************\n\n\n ${_list}");
     log("+++++++++\n\n  ${_list}  +++++++++\n\n"); // It allows us to see all the incoming data in the console.
 
+    return _list;
+
     /*
     var newsList=jsonDecode(result.data['results']);
     print("xxxxx");
@@ -75,6 +77,5 @@ class NewsApi{
     print(_list);
      */
 
-    return _list;
   }
 }

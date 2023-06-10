@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
-import '../core/services/nyt.api.dart';
+import '../core/services/NYT_Service.dart';
 import '../core/util/Constants.dart';
 import '../core/util/ILocalUtil.dart';
 import '../model/dto_news.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:most_popular_mobile/core/services/nyt.api.dart';
+import 'package:most_popular_mobile/core/services/NYT_Service.dart';
 import 'package:most_popular_mobile/view/Dashboard.dart';
 import 'package:most_popular_mobile/view/NewsDetailView.dart';
 import 'package:most_popular_mobile/view/NewsListView.dart';

@@ -32,7 +32,7 @@ class _TestListViewState extends State<TestListView> {
         final post=posts[index];
         final title=post["results"]["title"];
           return ListTile(
-            title: Text(title),
+            title: Text(index.toString()),
           );
       }),
     );

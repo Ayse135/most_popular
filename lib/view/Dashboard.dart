@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:most_popular_mobile/core/services/nyt.api.dart';
+import 'package:most_popular_mobile/core/services/NYT_Service.dart';
 import 'package:most_popular_mobile/model/dto_news.dart';
 import 'package:most_popular_mobile/view/NewsDetailView.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -17,7 +17,7 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   Future<List<dto_news>> _newsListFuture;
-  int page=1;
+  int page=7;
   RefreshController _refreshController = RefreshController(initialRefresh: false);
   final scrllCtrl =ScrollController();
 
@@ -27,15 +27,30 @@ class _DashboardState extends State<Dashboard> {
     _newsListFuture=NewsApi.getNewsData(page: page);
     scrllCtrl.addListener(listenScrolling);
   }
-  void listenScrolling(){
+  void listenScrolling() async {
     if(scrllCtrl.position.atEdge){
       final isTop=scrllCtrl.position.pixels==0;
       if(!isTop){
         print("sayfa sonuna geldiniz.");
-        setState(() {
-          page=7;
-          _newsListFuture=NewsApi.getNewsData(page: 7);
+        List<dynamic> l1 = await NewsApi.getNewsData(page: page);
+        List<dynamic> l2 = await _newsListFuture;
 
+        setState(() {
+          page=30;
+         _newsListFuture=NewsApi.getNewsData(page: page);
+
+         // _newsListFuture.then((value) => (_yeniListe));
+
+          print("yeni");
+          l2.add(l1);
+          print(l2);
+          //_newsListFuture=l2;
+         // for(int i=0;i<l1.length;i++){
+         //   l2.add(l1[i]);
+         //   l2.add(l1);
+         // }
+         // print(_newsListFuture);
+         // print(_yeniListe);
         });
       }
     }
@@ -50,7 +65,6 @@ class _DashboardState extends State<Dashboard> {
         {
           if(snapshot.hasData){
             List<dto_news> _listem=snapshot.data;
-
             return ListView.builder(
               controller: scrllCtrl,
               itemCount: _listem.length,
