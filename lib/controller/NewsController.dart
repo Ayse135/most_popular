@@ -20,12 +20,12 @@ class NewsController extends GetxController with ILocalUtil{
   // NEWS
   var newsListe = <dto_news>[].obs;
   var newsListe_STATUS = Rx<networkState>(networkState.loading);
-  var newsListePage = 0.obs;
+  var newsListePage = 1.obs;
   var newsListeArama = "".obs;
   var newsListeDone = false.obs;
   Future getNewsList({bool isRefresh = false,page=1}) async {
     try{
-      print("News Controller");
+      print("News Controller -> getNewsList");
       newsListe_STATUS.value = networkState.loading;
       newsListePage.value ++;
       if (isRefresh){
@@ -34,9 +34,9 @@ class NewsController extends GetxController with ILocalUtil{
       }
       print("page: ${newsListePage.value}");
       print(newsListe.length);
-      newsListe=await _newsService.getNewsList();
+      newsListe=await _newsService.getNews();
       newsListe.value.addAll(
-          await _newsService.getNewsList( page:page)
+          await _newsService.getNews( page:page)
       );
       newsListe_STATUS.value = networkState.success;
     }catch (e) {

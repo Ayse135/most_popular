@@ -8,6 +8,7 @@ class NewsApi{
   static Future<List<dto_news>> getNewsData({int page=1}) async{
     print("page:::::"+page.toString());
     String _url='http://api.nytimes.com/svc/mostpopular/v2/viewed/${page}.json?api-key=AXsHq5t4NUY9GAsaSLMkrVsenRSAvNCl';
+    print("api url:"+_url);
     List<dto_news> _list=[];
     var result = await Dio().get(_url);
     /**

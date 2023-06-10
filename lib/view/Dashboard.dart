@@ -61,7 +61,7 @@ class _DashboardState extends State<Dashboard> {
             );
           }else if(snapshot.hasError){
             return Center(
-              child: Text("veri yok veyaz çok fazla istek gönderildi."),
+              child: Text("veri yok veya çok fazla istek gönderildi."),
             );
           }else{
             return Center(
@@ -141,8 +141,8 @@ class _DashboardState extends State<Dashboard> {
             ),
             SizedBox(height: 6,),
             Divider(color: yesilK.shade200,thickness: .3,indent: 10,endIndent: 10,),
-         //    Text('${model.updated.day} ${aylar[model.updated.month]} ${model.updated.year}',
-           //    style: TextStyle(color: Colors.black54),)
+            // Text('${model.updated.day} ${aylar[model.updated.month]} ${model.updated.year}',
+            //    style: TextStyle(color: Colors.black54),)
             // Text(toDateTimeFormat_ProcessTime(model.updated), style: TextStyle(color: Colors.black54),),
 
           ],

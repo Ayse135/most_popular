@@ -4,7 +4,7 @@ import 'package:most_popular_mobile/model/dto_news.dart';
 
  class NewsService {
 
-   Future <List<dto_news>> getNewsList({int page=1}) async {
+   Future<List<dto_news>> getNews({int page=1}) async {
      // page can be just 1,7 and 30.
      String url='http://api.nytimes.com/svc/mostpopular/v2/viewed/${page}.json?api-key=AXsHq5t4NUY9GAsaSLMkrVsenRSAvNCl';
      try {
@@ -12,9 +12,10 @@ import 'package:most_popular_mobile/model/dto_news.dart';
        final response = await http.get(Uri.parse(url));
        print("Servis response: "+response.toString());
        //return dto_news.fromJson(jsonDecode(response.body));
+       // return dto_news.fromJson((response.body));
        return (response as List).map((e) => dto_news.fromJson(e)).toList();
      } catch (e) {
-       print("gelen cevap:");
+       print("NewsService -> getNews-- hata:");
        print(e.toString());
      }
    }

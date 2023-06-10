@@ -49,7 +49,7 @@ class NewsDetailView extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 10,),
-                Text("${model.welcomeAbstract}",style:siyahText16,
+                Text("${model.welcomeAbstract} ${model.welcomeAbstract}",style:siyahText16,
                   textAlign: TextAlign.justify,),
               ],
             ),

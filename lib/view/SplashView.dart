@@ -22,12 +22,19 @@ class _SplashViewState extends State<SplashView> with ILocalUtil {
   void initState() {
     super.initState();
 
-    Future.delayed(Duration(seconds: 0), () async {
+    /**
+     * I put 6second delay for viewing the splash screen
+     */
+    Future.delayed(Duration(seconds: 6), () async {
         try {
+          /**
+           * I usually use this for checking user if sign in or not then making the routes
+           */
           var appDataController = Get.find<NewsController>();
-         // await appDataController.fillDataWhenAppOpen(context);
+          // await appDataController.fillDataWhenAppOpen(context);
           Get.offAllNamed(routeDashboard);
-         // Get.offAllNamed(routeNewsList);
+          // Get.offAllNamed(routeTestList);
+          // Get.offAllNamed(routeNewsList);
         } catch (e){
           print("------------------- HATA SPLASH ------------------------");
           print(e.toString());
@@ -61,14 +68,14 @@ class _SplashViewState extends State<SplashView> with ILocalUtil {
                   SizedBox(height: 6,),
                   Lottie.asset('lib/assets/img/reading_news.json',height: size.height*.38),
                   SizedBox(height: 4,),
-                  Text("Yükleniyor...",style: siyahText20.copyWith(color: yesil),),
+                  Text("Yükleniyor...",style: siyahText20.copyWith(color: mor),),
                   SizedBox(height: 8,),
-                  LinearProgressIndicator(color: yesil,minHeight: 6,backgroundColor: Colors.grey.shade300,),
+                  LinearProgressIndicator(color: morA.shade500,minHeight: 6,backgroundColor: Colors.grey.shade300,),
                   SizedBox(height: 6,),
                   GetX<NewsController>(builder: (controller){
                     return Text(
                       "%" + controller.appOpenProcess.value.toString(),
-                      style: siyahText20.copyWith(color: yesil),
+                      style: siyahText20.copyWith(color: mor),
                     );
                   }),
                 ],

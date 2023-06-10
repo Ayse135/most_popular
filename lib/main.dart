@@ -6,6 +6,7 @@ import 'package:most_popular_mobile/view/Dashboard.dart';
 import 'package:most_popular_mobile/view/NewsDetailView.dart';
 import 'package:most_popular_mobile/view/NewsListView.dart';
 import 'package:most_popular_mobile/view/SplashView.dart';
+import 'package:most_popular_mobile/view/testListView.dart';
 import 'controller/Bindings/MainBinding.dart';
 
 void main() {
@@ -29,17 +30,15 @@ class MyApp extends StatelessWidget {
         GetPage(name: routeDashboard, page: () => Dashboard()),
         GetPage(name: routeNewsList, page: () => NewsListView()),
         GetPage(name: routeNewsDetail, page: () => NewsDetailView()),
-
-        //GetPage(name: routeKullaniciMesajListe, page: () => KullaniciMesajListeView()),
-        //GetPage(name: routeKullaniciMesajForm, page: () => KullaniciMesajFormView()),
+        GetPage(name: routeTestList, page: () => TestListView()),
       ],
       initialRoute: routeSplash,
     );
   }
 }
 
-
 String get routeSplash => '/splash';
 String get routeDashboard => '/dashboard';
 String get routeNewsList => '/newsList';
 String get routeNewsDetail => '/newsDetail/:id';
+String get routeTestList => '/test';
