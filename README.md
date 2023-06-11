@@ -50,8 +50,9 @@ in the Views -> NewsDetailView.dart
 	 
 *postscript
 Because of the cant converting data as properly I couldn't show you how exactly i create projects 
-but i didn't want to erase them so you could examine them too.  As you can see I'm facing some issues 
-but want to improve myself in a peacefull working area.
+but I didn't want to erase them so you could examine them too.  As you can see there will be a
+ Model-View-Controller constructure.
+
 
 
      
