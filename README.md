@@ -51,7 +51,7 @@ in the Views -> NewsDetailView.dart
 *postscript
 Because of the cant converting data as properly I couldn't show you how exactly i create projects 
 but I didn't want to erase them so you could examine them too.  As you can see there will be a
- Model-View-Controller constructure.
+ Model-View-Controller, Service(like Business Logic Layer) constructure.
 
 
 
